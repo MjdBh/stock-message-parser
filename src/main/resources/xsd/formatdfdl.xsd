@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+        targetNamespace="http://www.example.com/tse/format"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:fn="http://www.w3.org/2005/xpath-functions"
+        xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/">
+
+      <xs:annotation>
+        <xs:appinfo source="http://www.ogf.org/dfdl/">
+
+            <dfdl:defineVariable defaultValue="01"   external="false" name="messageType"    type="xs:string"/>
+            <dfdl:defineVariable defaultValue="0000" external="false" name="functionCode"   type="xs:string"/>
+
+            <dfdl:defineFormat name="format">
+                <dfdl:format representation="text" alignment="1" alignmentUnits="bytes"
+                             binaryBooleanFalseRep="0" binaryBooleanTrueRep="1"
+                             binaryCalendarRep="bcd"
+                             binaryDecimalVirtualPoint="0" binaryFloatRep="ieee"
+                             binaryNumberCheckPolicy="lax" binaryNumberRep="binary"
+                             binaryPackedSignCodes="C D F C" calendarCenturyStart="53"
+                             calendarCheckPolicy="strict" calendarDaysInFirstWeek="4"
+                             calendarFirstDayOfWeek="Monday" calendarLanguage="en-US"
+                             calendarObserveDST="yes" calendarPatternKind="explicit"
+                             calendarPattern="YYYYMMDD" calendarTimeZone="UTC+3:30"
+                             choiceLengthKind="implicit" decimalSigned="yes"
+                             documentFinalTerminatorCanBeMissing="no" emptyValueDelimiterPolicy="none"
+                             encoding="UTF-8" encodingErrorPolicy="replace" escapeSchemeRef=""
+                             fillByte="%NUL;" floating="no" ignoreCase="no" initiatedContent="no"
+                             initiator="" leadingSkip="0" lengthKind="explicit" lengthUnits="bytes"
+                             occursCountKind="implicit" outputNewLine="%CR;%LF;"
+                             prefixIncludesPrefixLength="no" separator=""
+                             separatorPosition="infix" sequenceKind="ordered" terminator=""
+                             textBidi="no" textBooleanFalseRep="false" textBooleanJustification="left"
+                             textBooleanPadCharacter="%SP;" textBooleanTrueRep="true"
+                             textCalendarJustification="left" textCalendarPadCharacter="%SP;"
+                             textNumberCheckPolicy="strict" textNumberJustification="right"
+                             textNumberPadCharacter="0" textNumberPattern="#0" textNumberRep="standard"
+                             textNumberRoundingIncrement="0.0" textNumberRoundingMode="roundUp"
+                             textNumberRounding="pattern" textOutputMinLength="0" textPadKind="padChar"
+                             textStandardBase="10" textStandardDecimalSeparator="."
+                             textStandardGroupingSeparator="," textStandardInfinityRep="Inf"
+                             textStandardNaNRep="NaN" textStandardZeroRep="" textStandardExponentRep=""
+                             textStringJustification="left" textStringPadCharacter="%SP;"
+                             textTrimKind="none" textZonedSignStyle="asciiStandard" trailingSkip="0"
+                             truncateSpecifiedLengthString="no" utf16Width="fixed"
+                             bitOrder="mostSignificantBitFirst" byteOrder="bigEndian"
+
+                             >
+                </dfdl:format>
+            </dfdl:defineFormat>
+        </xs:appinfo>
+    </xs:annotation>
+
+</xs:schema>

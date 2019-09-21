@@ -1,0 +1,2438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/"
+        xmlns:frm="http://www.example.com/tse/format"
+        xmlns:tst="http://www.example.com/tse/TSETypes"
+        targetNamespace="http://www.example.com/tse/TSETypes">
+
+    <xs:import namespace="http://www.example.com/tse/format" schemaLocation="formatdfdl.xsd"/>
+
+    <xs:annotation>
+        <xs:appinfo source="http://www.ogf.org/dfdl/">
+            <!-- Format annotation to apply default property values to all objects -->
+            <dfdl:format ref="frm:format"/>
+        </xs:appinfo>
+    </xs:annotation>
+
+    <xs:simpleType name="LRfIntAdfMsg" dfdl:length="16" dfdl:lengthUnits="characters" dfdl:representation="text">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="BaseString" dfdl:lengthKind="explicit" dfdl:lengthUnits="characters"
+                   dfdl:representation="text" >
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="BaseTime" dfdl:lengthKind="explicit" dfdl:lengthUnits="characters"
+                   dfdl:representation="text">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="BaseNumber" dfdl:textStringJustification="left" dfdl:textStringPadCharacter="0"
+                   dfdl:textTrimKind="none">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]*"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="CFon" dfdl:length="4">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Version" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="UnType" dfdl:length="5">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="UnId" dfdl:length="5">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="InstrumentID" dfdl:length="12">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DSaiOM" dfdl:length="8" dfdl:textNumberPadCharacter="0">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="NSeqOM" dfdl:textStringJustification="right" dfdl:length="6" dfdl:textStringPadCharacter="0"
+                   dfdl:textTrimKind="none">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="CValISIN" dfdl:length="12">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CEtaVal" dfdl:length="2">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="  "/>
+            <xs:enumeration value=" G"/>
+            <xs:enumeration value=" S"/>
+            <xs:enumeration value=" R"/>
+            <xs:enumeration value="A "/>
+            <xs:enumeration value="AG"/>
+            <xs:enumeration value="AS"/>
+            <xs:enumeration value="AR"/>
+            <xs:enumeration value="I "/>
+            <xs:enumeration value="IG"/>
+            <xs:enumeration value="IS"/>
+            <xs:enumeration value="IR"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="CActModEtaVal" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value=" "/>
+            <xs:enumeration value="P"/>
+            <xs:enumeration value="M"/>
+            <xs:enumeration value="C"/>
+            <xs:enumeration value="O"/>
+            <xs:enumeration value="R"/>
+            <xs:enumeration value="D"/>
+            <xs:enumeration value="A"/>
+            <xs:enumeration value="I"/>
+            <xs:enumeration value="E"/>
+            <xs:enumeration value="N"/>
+            <xs:enumeration value="F"/>
+            <xs:enumeration value="S"/>
+            <xs:enumeration value="G"/>
+            <xs:enumeration value="L"/>
+            <xs:enumeration value="X"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="HOVPgmVal" dfdl:length="6">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YMajOmNSC" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QTitXteIntrOM" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DSaiOmIni" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="NSeqOMIni" dfdl:length="6">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIdAdfpPl" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="ISens" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QTitDen" dfdl:length="9">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="NCpteposIptomx" dfdl:length="30">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_50" dfdl:length="50">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QTitAc" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QTitvt" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_8" dfdl:length="8">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="ITranV" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="ISensOM" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="A"/>
+            <xs:enumeration value="V"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="QTitTotOM" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YPLimSaiOM" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="L"/>
+            <xs:enumeration value="O"/>
+            <xs:enumeration value="K"/>
+            <xs:enumeration value="S"/>
+            <xs:enumeration value="M"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="IFt" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value=" "/>
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="5"/>
+            <xs:enumeration value="6"/>
+            <xs:enumeration value="7"/>
+            <xs:enumeration value="8"/>
+            <xs:enumeration value="9"/>
+            <xs:enumeration value="A"/>
+            <xs:enumeration value="B"/>
+            <xs:enumeration value="C"/>
+            <xs:enumeration value="D"/>
+            <xs:enumeration value="E"/>
+            <xs:enumeration value="F"/>
+            <xs:enumeration value="G"/>
+            <xs:enumeration value="H"/>
+            <xs:enumeration value="I"/>
+            <xs:enumeration value="J"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="QMt" dfdl:length="13">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+    <xs:simpleType name="QMt9" dfdl:length="9">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QMt15" dfdl:length="15">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QMt13" dfdl:length="13">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:complexType name="PLimSaiOM">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt9"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="YValiOmNSC" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="J"/>
+            <xs:enumeration value="D"/>
+            <xs:enumeration value="F"/>
+            <xs:enumeration value="E"/>
+            <xs:enumeration value="S"/>
+            <xs:enumeration value="R"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="DValiOM" dfdl:length="8">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QTitMinOM" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QTitDvlOM" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIdAdfEmet" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YOM" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="ICfmOM" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="IOMTrtPov" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:complexType name="PDchOmStop">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt9"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="QRestModAtd" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIdNgSai" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YCpteOM" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="5"/>
+            <xs:enumeration value="6"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="YCpteOMCie" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="NCptePosIptOm" dfdl:length="16">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIdOmNg" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DHSaiOmAdf" dfdl:length="14">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CBq" dfdl:length="4">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CPyMbr" dfdl:length="2">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CVilMbr" dfdl:length="2">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CSec" dfdl:length="3">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="LSaiOM" dfdl:length="18" >
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIdMbrDestGupOm" dfdl:length="8"  >
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <xs:complexType name="CBIC">
+        <xs:sequence>
+            <xs:element name="BankCode" type="tst:CBq"/>
+            <xs:element name="CountryCode" type="tst:CPyMbr"/>
+            <xs:element name="TownCode" type="tst:CVilMbr"/>
+            <xs:element name="BranchCode" type="tst:CSec"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AdonCompOmAplKL">
+        <xs:sequence>
+            <xs:element name="IdTraderIssuing" type="tst:CIdNgSai"/>
+            <xs:element name="OrderOrigin" type="tst:YCpteOM"/>
+            <xs:element name="ClientAccountNumber" type="tst:NCptePosIptOm"/>
+            <xs:element name="TraderOrderNumber" type="tst:CIdOmNg"/>
+            <xs:element name="OrderEntryDateTime" type="tst:DHSaiOmAdf"/>
+            <xs:element name="BicOfBroker" type="tst:CBIC"  dfdl:lengthKind="implicit"/>
+        <!--    <xs:element name="FreeText" type="tst:LSaiOM"/>
+            <xs:element name="GiveUpBrokerId" type="tst:CIdMbrDestGupOm"/>-->
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AdonCompOmApl">
+        <xs:sequence>
+            <xs:element name="IdTraderIssuing" type="tst:CIdNgSai"/>
+            <xs:element name="OrderOrigin" type="tst:YCpteOM"/>
+            <xs:element name="ClientAccountNumber" type="tst:NCptePosIptOm"/>
+            <xs:element name="TraderOrderNumber" type="tst:CIdOmNg"/>
+            <xs:element name="OrderEntryDateTime" type="tst:DHSaiOmAdf"/>
+            <xs:element name="BicOfBroker" type="tst:CBIC" dfdl:lengthKind="implicit"/>
+            <xs:element name="FreeText" type="tst:LSaiOM" />
+            <xs:element name="GiveUpBrokerId" type="tst:CIdMbrDestGupOm" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="QTitRestOM" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DMsgRepoN" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="IPrsQTitRest" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DSeaBsEven" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:complexType name="PTran">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt13"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PTranS">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt9"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="QTitTran" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="HTTRAN" dfdl:length="6">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="NMsgRepoN" dfdl:length="6">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="HMsgRepoN" dfdl:length="6">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIdAdfCie" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="NTran" dfdl:length="7">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="NTranKL" dfdl:length="8">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YOMOrgTran" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value=" "/>
+            <xs:enumeration value="B"/>
+            <xs:enumeration value="I"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CGdsVal" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="A"/>
+            <xs:enumeration value="O"/>
+            <xs:enumeration value="F"/>
+            <xs:enumeration value="X"/>
+            <xs:enumeration value="Y"/>
+            <xs:enumeration value="C"/>
+            <xs:enumeration value="P"/>
+            <xs:enumeration value="D"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="ZProdCpsTran" dfdl:length="2">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_6" dfdl:length="6">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIdGrc" dfdl:length="2">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CEtaGrc" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="C"/>
+            <xs:enumeration value="P"/>
+            <xs:enumeration value="O"/>
+            <xs:enumeration value="E"/>
+            <xs:enumeration value="S"/>
+            <xs:enumeration value="R"/>
+            <xs:enumeration value="N"/>
+            <xs:enumeration value="F"/>
+            <xs:enumeration value="B"/>
+            <xs:enumeration value="I"/>
+            <xs:enumeration value="Z"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="ZPcsNSCEmetMsgRLCGrc" dfdl:length="2">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DSeaBs" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="HSeaBs" dfdl:length="6">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DHEmisMsgSpi" dfdl:length="14">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="IClGrc" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DHTran" dfdl:length="14">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DTran" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_1" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_23" dfdl:length="23">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_4" dfdl:length="4">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIdItf" dfdl:length="11">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIsinProdCps" dfdl:length="12">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CFonOrg" dfdl:length="4">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CEr" dfdl:length="6">
+        <xs:restriction base="tst:BaseTime"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CSignKMuProdCps" dfdl:length="1">
+            <xs:restriction base="tst:BaseString">
+                <xs:enumeration value="+"/>
+                <xs:enumeration value=" "/>
+                <xs:enumeration value="-"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_28" dfdl:length="28">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="KRaoCpsStg" dfdl:length="4">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QTitRestOmIni" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="NTranKLProdCps" dfdl:length="8">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:complexType name="ARaoCps">
+        <xs:sequence>
+            <xs:element name="ComponentMultipleSign" type="tst:CSignKMuProdCps"/>
+            <xs:element name="LegNumberRatio" type="tst:KRaoCpsStg"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PTranProdCps">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AdonProdCpsTran">
+        <xs:sequence>
+            <xs:element name="UnderlyingIdentificationCode" type="tst:CIsinProdCps"/>
+            <xs:element name="LegRatioAggregate" type="tst:ARaoCps" dfdl:lengthKind="implicit"/>
+            <xs:element name="TradePriceInstrument" type="tst:PTranProdCps" dfdl:lengthKind="implicit"/>
+            <xs:element name="TRSTradeNumberInstrument" type="tst:NTranKLProdCps"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="CIdAdfClr" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_3" dfdl:length="3">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="LSai" dfdl:length="10">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIdAdfPplCie" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="HSaiDen" dfdl:length="6">
+        <xs:restriction base="tst:BaseTime"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YOpTCS" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="HDebVWAP" dfdl:length="6">
+        <xs:restriction base="tst:BaseTime"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="HFinVWAP" dfdl:length="6">
+        <xs:restriction base="tst:BaseTime"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="LAdv" dfdl:length="300">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_10" dfdl:length="10">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIdAfCie" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIdNgCie" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="ISensVarP" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="+"/>
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="-"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="QMt12" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:complexType name="QTotTran">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt12"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="YCpteOmAc" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="5"/>
+            <xs:enumeration value="6"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_5" dfdl:length="5">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_16" dfdl:length="16">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_26" dfdl:length="26">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:complexType name="PAc">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PVt">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="LEr" dfdl:length="71">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="LRfTCSCie" dfdl:length="16">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="lMsgRj" dfdl:length="200">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_30" dfdl:length="30">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIdAdhNSCAc" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+
+    </xs:simpleType>
+    <xs:simpleType name="CIdAdhNSCVt" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QTitNgJ" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YCpteOmVt" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="5"/>
+            <xs:enumeration value="6"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_2" dfdl:length="2">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="ITranYApl" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="ICtlCCM" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="LSaiX" dfdl:length="10">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="LRfTCS" dfdl:length="16">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YCpteOMX" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="NCptePosIptOmX" dfdl:length="16">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIdAdfClrX" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="yAnu" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="YOmOrgTran" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value=" "/>
+            <xs:enumeration value="B"/>
+            <xs:enumeration value="I"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_29" dfdl:length="29">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="yEli" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="IAnuTran" dfdl:length="2">
+        <xs:restriction base="tst:BaseNumber">
+            <xs:enumeration value="00"/>
+            <xs:enumeration value="07"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="IFinTran" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="IMsgA0DebFin" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="D"/>
+            <xs:enumeration value="F"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="ZTotPcsNSCEmetMsgRLC" dfdl:length="2">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CExtValMdv" dfdl:length="20">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YOmAc" dfdl:length="1">
+            <xs:restriction base="tst:BaseString">
+                <xs:enumeration value=" "/>
+                <xs:enumeration value="A"/>
+                <xs:enumeration value="M"/>
+                <xs:enumeration value="U"/>
+            </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="CSensVarPTranPP" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="+"/>
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="-"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_86" dfdl:length="86">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YMarNSC" dfdl:length="2">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YMarMsg" dfdl:length="2">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YOmVt" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value=" "/>
+            <xs:enumeration value="A"/>
+            <xs:enumeration value="M"/>
+            <xs:enumeration value="U"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIdAdfPpl" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_20" dfdl:length="20">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YSupOm" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="CSensVarPValPP" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="+"/>
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="-"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="CSensOrdNrepVal" dfdl:length="2">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YPMsgP" dfdl:length="2">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="30"/>
+            <xs:enumeration value="31"/>
+            <xs:enumeration value="32"/>
+            <xs:enumeration value="33"/>
+            <xs:enumeration value="34"/>
+            <xs:enumeration value="35"/>
+            <xs:enumeration value="36"/>
+            <xs:enumeration value="38"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIdAdh" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DSaiOm" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="NSeqOm" dfdl:length="6">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CActFdm" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="C"/>
+            <xs:enumeration value="M"/>
+            <xs:enumeration value="R"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="YCpteOm" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YOm" dfdl:length="1">
+            <xs:restriction base="tst:BaseString">
+                <xs:enumeration value=" "/>
+                <xs:enumeration value="A"/>
+                <xs:enumeration value="M"/>
+                <xs:enumeration value="U"/>
+            </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="YPLimSaiOm" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DHPriOm" dfdl:length="20">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_13" dfdl:length="13">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_21" dfdl:length="21">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_36" dfdl:length="36">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_25" dfdl:length="25">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DHDebCotProdMdv" dfdl:length="14">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DHFinCotProdMdv" dfdl:length="14">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="IValiOmIns" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+        <xs:enumeration value="E"/>
+        <xs:enumeration value="J"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="CProdCpsProdYCbn" dfdl:length="12">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="ISensOm" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YExpPValMdvAdf" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YAppaValMdv" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YExpVarPValDrPRf" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="QTitMtrOm" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="KMuProdCpsProdCbn" dfdl:length="2">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CDevPExoProdMdv" dfdl:length="3">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QTitMinSaiOmProd" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="LocForeignIndicator" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DSeaPCompValMdv" dfdl:length="8">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="ICaVarPJDrPRf" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YPCompValMdv" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CSuperSecValICB" dfdl:length="4">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIndustryValICB" dfdl:length="4">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YQStg" dfdl:length="3">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="AON"/>
+            <xs:enumeration value="  "/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="YStg" dfdl:length="2">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YCreValMdv" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="S"/>
+            <xs:enumeration value="F"/>
+            <xs:enumeration value=" "/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIdAdfCreValMdv" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIdNgCreValMdv" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YExoFamProdYOpt" dfdl:length="1">
+        <xs:restriction base="tst:BaseString" dfdl:useNilForDefault="yes" >
+            <xs:enumeration value=" "/>
+            <xs:enumeration value="A"/>
+            <xs:enumeration value="E"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="IEtaPcsOl" dfdl:length="1">
+        <xs:restriction base="tst:BaseString" dfdl:useNilForDefault="yes" >
+            <xs:enumeration value=" "/>
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="ISupOmCrn" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIsinProdSja" dfdl:length="12">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIsinForeign" dfdl:length="12">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_12" dfdl:length="12">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="LPra" dfdl:length="10">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="IVtDec" dfdl:length="1">
+        <xs:restriction base="tst:BaseString" dfdl:useNilForDefault="yes">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="IProdIsl" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YDeComp" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="QTitMaxSaiOmSell" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QTitMaxSaiOmBuy" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QTitMaxSaiOmProd" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="ZMaxLimDifVal" dfdl:length="2">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QTitRestOm" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QCurStSplit" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QNewStSplit" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QCurStDiv" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QAddStDiv" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:complexType name="StDivAgg">
+        <xs:sequence>
+            <xs:element name="CurrentNumberOfShares" type="tst:QCurStDiv"/>
+            <xs:element name="AdditionalNumberOfShares" type="tst:QAddStDiv"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="StSplitAgg">
+        <xs:sequence>
+            <xs:element name="CurrentNumberOfShares" type="tst:QCurStSplit"/>
+            <xs:element name="NewNumberOfShares" type="tst:QNewStSplit"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="XDtaStg">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt13"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PCpsDrvObl">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt13"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PSaiSMinOkValMdv">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt13"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PSaiSMaxOkValMdv">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt13"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PCompValMdv">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PExoProdMdv">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt13"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="QTickValMdv">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PAffOm">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AKProdCpsProdYCbn">
+        <xs:sequence>
+            <xs:element name="ComponentProductMultiplicationCoefficientSign" type="tst:CSignKMuProdCps"/>
+            <xs:element name="CombinedProductComponentMultiplicationCoefficient" type="tst:KMuProdCpsProdCbn"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PLimSaiOm">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType  name="AIdOm">
+        <xs:sequence>
+            <xs:element name="SubscriberID" type="tst:CIdAdh"/>
+            <xs:element name="OrderEntryDate" type="tst:DSaiOm"/>
+            <xs:element name="OrderSequenceNumber" type="tst:NSeqOm"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="POfDemVal">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PPhSeaCotJ">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PPbSeaCotJ">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PObjMsgP">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="YTchRLC" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="CEmetRLC" dfdl:length="2">
+        <xs:restriction base="tst:BaseNumber">
+            <xs:enumeration value="11"/>
+            <xs:enumeration value="21"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="ZOctMsgRLC" dfdl:length="3">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="NMsgInRLC" dfdl:length="6">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="NMsgOutRLC" dfdl:length="6">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CGRLC" dfdl:length="2">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CSgrRLC" dfdl:length="2">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CSicoRGA" dfdl:length="6">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CValMne" dfdl:length="5">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CPlCot" dfdl:length="3">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DEvenRLC" dfdl:length="8">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="HEvenRLC" dfdl:length="6">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="ZMlsHEvenRLC" dfdl:length="3">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="ZOctMsgRLC5" dfdl:length="5">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YMsgRLC" dfdl:length="2">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:complexType name="ADHEvenRLC">
+        <xs:sequence>
+            <xs:element name="DateOfEvent" type="tst:DEvenRLC"/>
+            <xs:element name="TimeOfEvent" type="tst:HEvenRLC"/>
+            <xs:element name="NumberOfMilliseconds" type="tst:ZMlsHEvenRLC"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AEttFnlRLCY1">
+        <xs:sequence>
+            <xs:element name="InstrumentShortId" type="tst:CSicoRGA"/>
+            <xs:element name="InstrumentMnemonicCode" type="tst:CValMne"/>
+            <xs:element name="InstrumentMarketPlaceId" type="tst:CPlCot"/>
+            <xs:element name="EventTimeStamp" type="tst:ADHEvenRLC" dfdl:lengthKind="implicit"/>
+            <xs:element name="InstrumentIdentification" type="tst:InstrumentID"/>
+            <xs:element name="MessageType" type="tst:ZOctMsgRLC5"/>
+            <xs:element name="Filler" type="tst:Filler_73"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AEttTchRLCY1">
+        <xs:sequence>
+            <xs:element name="TypeOfHeader" type="tst:YTchRLC"/>
+            <xs:element name="IdOfApplication" type="tst:CEmetRLC"/>
+            <xs:element name="MessageLength" type="tst:ZOctMsgRLC"/>
+            <xs:element name="IncomingMessages" type="tst:NMsgInRLC"/>
+            <xs:element name="OutgoingMessages" type="tst:NMsgOutRLC"/>
+            <xs:element name="GroupCode" type="tst:CGRLC"/>
+            <xs:element name="SubGroupCode" type="tst:CSgrRLC"/>
+            <xs:element name="MessageType" type="tst:YMsgRLC">
+                <xs:annotation>
+                    <xs:appinfo source="http://www.ogf.org/dfdl/">
+                        <dfdl:setVariable ref="frm:messageType" value="{.}"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AEttRLCY1">
+        <xs:sequence>
+            <xs:element name="TechnicalHeader" type="tst:AEttTchRLCY1" dfdl:lengthKind="implicit"/>
+            <xs:element name="FunctionalHeader" type="tst:AEttFnlRLCY1" dfdl:lengthKind="implicit"/>
+        </xs:sequence>
+    </xs:complexType>
+
+<!-- removed start -->
+
+    <xs:complexType name="AEttRLCY2">
+        <xs:sequence>
+            <xs:element name="TechnicalHeader" dfdl:length="45" type="tst:BaseString" />
+            <xs:element name="MessageType" type="tst:YMsgRLC">
+                <xs:annotation>
+                    <xs:appinfo source="http://www.ogf.org/dfdl/">
+                        <dfdl:setVariable ref="frm:messageType" value="{.}"/>
+                    </xs:appinfo>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FunctionalHeader" type="tst:BaseString" dfdl:length="6"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- removed end  -->
+
+    <xs:complexType name="PClosing">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="IClose" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="YClose" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="PClosingNoAdj">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PVWAP">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PVWAPNoAdj">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PDrCotVal">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PDrcotVaLNoAdj">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="ZTotTran" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QTotTran5J" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:complexType name="QTotCap">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="XTicKPdr" dfdl:length="7">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="XTicKPdrApl" dfdl:length="7">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="ZTitMoyEhgMS" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="XMaxEhgMoy" dfdl:length="7">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="XMaxEhgMoyApl" dfdl:length="7">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="XMaxEhgAdm" dfdl:length="7">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="XMaxEhgAdmApl" dfdl:length="7">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_48" dfdl:length="48">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIndustryVal" dfdl:length="4">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CSuperSecVal" dfdl:length="4">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="LSuperSecVal" dfdl:length="40">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="LIndustryVal" dfdl:length="40">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_32" dfdl:length="32">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="IEtaCotVal"  dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value=" "/>
+            <xs:enumeration value="S"/>
+            <xs:enumeration value="R"/>
+            <xs:enumeration value="H"/>
+            <xs:enumeration value="B"/>
+            <xs:enumeration value="P"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="IOrgResVal" dfdl:nilKind="literalCharacter" dfdl:nilValue=" " dfdl:length="1" >
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DDebSuVal" dfdl:length="8">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="HDebSuVal" dfdl:length="6">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="HOvPgmVal" dfdl:length="6">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CEtaValSysTCS" dfdl:length="1" >
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_22" dfdl:length="22">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:complexType name="XQVarPJDrPRf">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="CComVal" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="LBoard" dfdl:length="40">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_35" dfdl:length="35">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CSecVal" dfdl:length="3">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CSoSecVal" dfdl:length="4">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="LSoSecVal" dfdl:length="40">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CSecValICB" dfdl:length="4">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="LSecVal" dfdl:length="40">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="ITabModMeLim" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="*"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_75" dfdl:length="75">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_73" dfdl:length="73">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="IUrg" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="O"/>
+            <xs:enumeration value="N"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="YCrl" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="B"/>
+            <xs:enumeration value="T"/>
+            <xs:enumeration value="R"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="YDest" dfdl:length="2">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="TO"/>
+            <xs:enumeration value="FI"/>
+            <xs:enumeration value="FT"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIdMsg" dfdl:length="3">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="ZTotSeg" dfdl:length="2">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="NSeqSeg" dfdl:length="2">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="LTit" dfdl:length="80">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="LMsg" dfdl:length="854">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:complexType name="PTeoOvJ">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="QXtePTeoOvj" dfdl:length="12">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CSensQNrepOv" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value=" "/>
+            <xs:enumeration value="A"/> <!--BUY -->
+            <xs:enumeration value="V"/> <!--SELL-->
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="QNrepOv" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QTitMeLimSimAc" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:complexType name="PMeLimSimAcVal">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PMeLimSimVtVal">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="QTitMeLimSimVt" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:complexType name="PPrCJ">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PDrCotJ">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt15"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="DrCotJ">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="YPOvVal" dfdl:length="2">
+        <xs:restriction base="tst:BaseNumber">
+            <xs:enumeration value="04"/>
+            <xs:enumeration value="07"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="QTitNgOvVal" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:complexType name="PSGelStaMax" >
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PSGelStaMin" >
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="CPhaCot" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="C"/>
+            <xs:enumeration value="P"/>
+            <xs:enumeration value="E"/>
+            <xs:enumeration value="O"/>
+            <xs:enumeration value="S"/>
+            <xs:enumeration value="R"/>
+            <xs:enumeration value="U"/>
+            <xs:enumeration value="N"/>
+            <xs:enumeration value="F"/>
+            <xs:enumeration value="B"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="DHDebPhaGrcSea" dfdl:length="14">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CPhaAutoGrcAprOv" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value=" "/>
+            <xs:enumeration value="P"/>
+            <xs:enumeration value="S"/>
+            <xs:enumeration value="R"/>
+            <xs:enumeration value="N"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="AHPhaGrcSea">
+        <xs:sequence>
+            <xs:element name="PhaseCode" type="tst:CPhaCot"/>
+            <xs:element name="TriggerTime" type="tst:DHDebPhaGrcSea"/>
+            <xs:element name="PhaseCodeAfterOpening" type="tst:CPhaAutoGrcAprOv"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ACarValRLC">
+        <xs:sequence>
+            <xs:element name="InstrumentName" type="tst:LVal18"/>
+            <xs:element name="Type" type="tst:YVal"/>
+            <xs:element name="Filler10" type="tst:Filler_1"/>
+            <xs:element name="CodeOfCountry" type="tst:CPyEmet"/>
+            <xs:element dfdl:lengthKind="implicit"  name="AmountOfParValue" type="tst:QNmVlo"/>
+            <xs:element name="Filler03" type="tst:Filler_3"/>
+            <xs:element name="NumberOfSharesOrBonds" type="tst:ZTitAd"/>
+            <xs:element name="CodeForIssuingCompany" type="tst:CSocCSAC"/>
+            <xs:element name="AFCName" type="tst:LSoc30"/>
+            <xs:element name="FillerC6" type="tst:Filler_6"/>
+            <xs:element name="FillerC3" type="tst:Filler_3"/>
+            <xs:element name="FillerC9" type="tst:Filler_9"/>
+            <xs:element name="FillerC2" type="tst:Filler_2"/>
+            <xs:element name="FillerC13" type="tst:Filler_13"/>
+            <xs:element name="FillerC1" type="tst:Filler_1"/>
+            <xs:element name="FillerC32" type="tst:Filler_32"/>
+            <!--<xs:element dfdl:lengthKind="implicit" name="AggregateForIssuingBusinessSegment" type="tst:ASecEco"/>
+            <xs:element name="Filler" type="tst:Filler_3"/>
+            <xs:element name="SICOVAMCode" type="tst:CEtFnc"/>
+            <xs:element name="CodeForSpecialTax" type="tst:IValMry"/>
+            <xs:element name="MarketSegmentCode" type="tst:CSegMarEnvLco"/>
+            <xs:element dfdl:lengthKind="implicit" name="InterestRate" type="tst:XIntOblRte"/>
+            <xs:element name="TypeOfInterestRateForBond" type="tst:YTxInt"/>
+            <xs:element name="IssueDateOfBound" type="tst:DEmisObl"/>
+            <xs:element name="FirstPossibleSettlementDate" type="tst:DPrRgLivVal"/>
+            <xs:element name="StartDateBondRepayment" type="tst:DDebAm"/>
+            -->
+            <xs:element name="DateOfChangeTakeEffect" type="tst:DESop"/>
+            <xs:element name="TypeOfCorporateEvent" type="tst:YOPSJ"/>
+            <xs:element name="CodeOfInstrumentCategory" type="tst:CGdSVal"/>
+            <xs:element name="Filler7" type="tst:Filler_7"/>
+<!--        <xs:element name="StartDateForBondRepayment" type="tst:DDebAm"/>
+            <xs:element name="ShortIdToPreviousId" type="tst:CSicoRGAChn"/>
+            <xs:element name="CodeForFrequencyOfPaymentForABond" type="tst:CQtmJoui"/>-->
+            <xs:element name="CurrencyCodeForIssuePrice" type="tst:CDevPEmis"/>
+            <xs:element dfdl:lengthKind="implicit" name="IssuePrice" type="tst:PEmis"/>
+            <xs:element name="Filler2" type="tst:Filler_2"/>
+            <xs:element name="Filler1C" type="tst:Filler_1"/>
+            <xs:element name="Filler11" type="tst:Filler_11"/>
+<!--        <xs:element name="TypeOfEarlyRepayment" type="tst:YRbAnt"/>
+            <xs:element name="TypeOfExtendedEarlyRepayment" type="tst:YRbPro"/>
+            <xs:element name="IndicatorInSRD" type="tst:IValAdSrd"/>
+            <xs:element name="ExpirationDateOfContract" type="tst:DEchPretEmp"/>
+            <xs:element name="IndicatorOfVotingRight" type="tst:IDtVote"/>
+            <xs:element name="FlagOfDematerialization" type="tst:IDemat"/>
+            <xs:element name="BearerMayBeIdentified" type="tst:ITpi"/>-->
+            <xs:element name="VWAPSecurityFlag" type="tst:ILcoVwap"/>
+            <xs:element name="GroupId" type="tst:CGrValCot"/>
+            <xs:element name="Filler3" type="tst:Filler_3"/>
+            <xs:element name="Filler12C" type="tst:Filler_12"/>
+            <xs:element name="CountryCodeListed" type="tst:CPyCot"/>
+            <xs:element name="CurrencyCode" type="tst:CDevCot"/>
+            <xs:element name="DateOfFirstDay" type="tst:DInMar"/>
+            <xs:element name="SegmentForSecurity" type="tst:CCpmLco"/>
+            <xs:element name="Filler6" type="tst:Filler_6"/>
+            <xs:element name="SetOfVariablePrice" type="tst:CIdxPasCotVarVal"/>
+            <xs:element name="TypeOfUnit" type="tst:YUniExpP"/>
+            <xs:element name="DateOfLastPrice" type="tst:DDrCV"/>
+            <xs:element dfdl:lengthKind="implicit" name="LastAdjustedAndSuper" type="tst:PDrAjSajCotV"/>
+            <xs:element name="Filler013" type="tst:Filler_13"/>
+            <xs:element dfdl:lengthKind="implicit" name="LastAdjustedClosingPrice" type="tst:PDrAjCotV"/>
+            <xs:element dfdl:lengthKind="implicit" name="AmountOfPriceTick" type="tst:QPasCotFxeVal"/>
+            <xs:element name="AFCName18" type="tst:LVal18AFC"/>
+            <xs:element name="FillerD1" type="tst:Filler_1"/>
+            <xs:element name="FillerD01" type="tst:Filler_1"/>
+            <xs:element name="FillerD2" type="tst:Filler_2"/>
+            <xs:element name="FillerD02" type="tst:Filler_2"/>
+            <xs:element name="Filler13" type="tst:Filler_13"/>
+            <xs:element name="CashProductCodeMessageSent" type="tst:CAFCValObjMsg"/>
+            <xs:element name="Filler28" type="tst:Filler_28"/>
+            <xs:element name="FillerF5" type="tst:Filler_5"/>
+            <xs:element name="FillerF01" type="tst:Filler_1"/>
+            <xs:element name="FillerF13" type="tst:Filler_13"/>
+            <xs:element name="FillerF2" type="tst:Filler_2"/>
+            <xs:element name="FillerF1" type="tst:Filler_1"/>
+            <xs:element name="LotSize" type="tst:QQtTranMarVal"/>
+            <xs:element name="FillerG1" type="tst:Filler_1"/>
+            <xs:element name="FillerG8" type="tst:Filler_8"/>
+            <xs:element name="Name30" type="tst:LVal30"/>
+            <xs:element name="FillerL6" type="tst:Filler_6"/>
+            <xs:element name="FillerL8" type="tst:Filler_8"/>
+            <xs:element name="FillerL7" type="tst:Filler_7"/>
+            <xs:element name="IsinCode" type="tst:CIsin"/>
+            <xs:element name="FillerH18" type="tst:Filler_18"/>
+            <xs:element name="FillerH17" type="tst:Filler_17"/>
+            <xs:element name="FillerH13" type="tst:Filler_13"/>
+            <xs:element name="WeightedAverageSpreadQuantity" type="tst:ZNorTitBlcNg"/>
+            <xs:element name="FillerG01" type="tst:Filler_1"/>
+            <xs:element name="FillerG13" type="tst:Filler_13"/>
+            <xs:element name="FillerG11" type="tst:Filler_11"/>
+            <xs:element name="MarketFlowCode" type="tst:CFlmVal"/>
+            <xs:element name="FillerJ1" type="tst:Filler_1"/>
+            <xs:element name="FillerJ130" type="tst:Filler_13"/>
+            <xs:element name="FillerJ3" type="tst:Filler_3"/>
+            <xs:element name="FillerJ12" type="tst:Filler_12"/>
+            <xs:element name="FillerJ01" type="tst:Filler_1"/>
+            <xs:element name="FillerJ13" type="tst:Filler_13"/>
+            <xs:element name="FillerJ001" type="tst:Filler_1"/>
+            <xs:element name="FillerJ013" type="tst:Filler_13"/>
+            <!--
+            <xs:element name="FormOfShare" type="tst:YTitVal"/>
+            <xs:element name="TYpeOFHoldersRight" type="tst:YAdTitNg"/>
+            <xs:element name="CodeOfCertificate" type="tst:OCertifVAL"/>
+            <xs:element name="Filler1" type="tst:Filler_1"/>
+            <xs:element dfdl:lengthKind="implicit" name="ParVAl" type="tst:QNmVal"/>
+            <xs:element name="AFCCodeForWarrant" type="tst:CAFCValSjaWar"/>
+            <xs:element name="TypeOfDerivative" type="tst:IYMdvVal"/>
+            <xs:element name="Filler21" type="tst:Filler_21"/>
+            <xs:element name="IndicatorInRELIT" type="tst:IApaValRlISB"/>
+            <xs:element name="IntermediaryOfRELIT" type="tst:IApaValRlSbi"/>
+            <xs:element name="OverTheCounterOfRELIT" type="tst:IApaValRlGrgr"/>
+            <xs:element name="SettlementSubSystemOfRELIT" type="tst:IApaValRlDn"/>
+            <xs:element name="IndicatorInSettlementSubSystem" type="tst:IApaValRlGar"/>
+            <xs:element dfdl:lengthKind="implicit" name="BlockMoneyForCalculateWAS" type="tst:QNorCpxBlcFmp"/>
+            <xs:element name="Filler02" type="tst:Filler_2"/>
+            <xs:element name="MethodOfRepaymentBond" type="tst:SRbEmp"/>
+            <xs:element name="Filler01" type="tst:Filler_1"/>
+            <xs:element name="DateOfFirstPayment" type="tst:DPrEch"/>
+            <xs:element name="Filler36" type="tst:Filler_36"/>
+            <xs:element dfdl:lengthKind="implicit" name="AggregateIdLiquidity" type="tst:ASbAniVal"/>
+            <xs:element name="Filler001" type="tst:Filler_1"/>
+            <xs:element name="TypeOfRelationshipToIndex" type="tst:YApaValIdxRLC"/>
+            <xs:element name="Filler05" type="tst:Filler_5"/>
+            <xs:element name="IsinCodeToPrevious" type="tst:CValIsinChn"/>
+            <xs:element name="Filler04" type="tst:Filler_4"/>
+            <xs:element name="SettlementPeriod" type="tst:TDeDn"/>
+            <xs:element name="MethodOfAccounting" type="tst:YTrtTitSico"/>
+            <xs:element name="DateOfRemoval" type="tst:DAdValDep"/>
+            <xs:element name="FININFOId" type="tst:CFfoDepVal"/>
+            <xs:element dfdl:lengthKind="implicit" name="AggregateForFTSE" type="tst:AClsEcoFtseSoc"/>
+            <xs:element name="Filler0001" type="tst:Filler_1"/>
+            <xs:element name="Filler25" type="tst:Filler_25"/>
+            <xs:element dfdl:lengthKind="implicit" name="AmountOfParValueForCalculateTrade" type="tst:QNmMarValVlo"/>
+            <xs:element name="CurrencyCodeForParValueOfCalculation" type="tst:CDevNmMarValIso3A"/>
+            <xs:element name="NumberOfBoundsStillRepaid" type="tst:ZTitCirObl"/>
+            -->
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="LVal18" dfdl:length="18">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="LVal30" dfdl:length="30">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YVal" dfdl:length="3">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="SVal" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CPyEmet" dfdl:length="3">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:complexType name="QNmVlo">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt13"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="CDevNm" dfdl:length="3">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="ZTitAd" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CSocCSAC" dfdl:length="5">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="LSoc30" dfdl:length="30">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CEtFnc" dfdl:length="8">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="IValMry" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CSegMarEnvLco" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:complexType name="XIntOblRte">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="YTxInt" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DEmisObl" dfdl:length="8">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DPrRgLivVal" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DDebAm" dfdl:length="8">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DFinAm" dfdl:length="8">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DESop" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YOPSJ" dfdl:length="2">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="00"/>
+            <xs:enumeration value="01"/>
+            <xs:enumeration value="03"/>
+            <xs:enumeration value="04"/>
+            <xs:enumeration value="05"/>
+            <xs:enumeration value="09"/>
+            <xs:enumeration value="12"/>
+            <xs:enumeration value="18"/>
+            <xs:enumeration value="19"/>
+            <xs:enumeration value="20"/>
+            <xs:enumeration value="21"/>
+            <xs:enumeration value="06"/>
+            <xs:enumeration value="07"/>
+            <xs:enumeration value="08"/>
+            <xs:enumeration value="11"/>
+            <xs:enumeration value="13"/>
+            <xs:enumeration value="14"/>
+            <xs:enumeration value="15"/>
+            <xs:enumeration value="16"/>
+            <xs:enumeration value="17"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="CGdSVal" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="A"/>
+            <xs:enumeration value="I"/>
+            <xs:enumeration value="W"/>
+            <xs:enumeration value="O"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="CSicoRGAChn" dfdl:length="6">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CQtmJoui" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CDevPEmis" dfdl:length="3">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:complexType name="PEmis">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt13"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="YRbAnt" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YRbPro" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="IValAdSrd" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DEchPretEmp" dfdl:length="8">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="IDtVote" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="IDemat" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="ITpi" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="ILcoVwap" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="CGrValCot" dfdl:length="2">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CGdSecEco" dfdl:length="2">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CSecAtvEco" dfdl:length="2">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CSecCompAtv" dfdl:length="2">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:complexType name="ASecEco">
+        <xs:sequence>
+            <xs:element name="EconomicGroupingCodeOfIssuer" type="tst:CGdSecEco"/>
+            <xs:element name="CodeForIndustryIssuingCompany" type="tst:CSecAtvEco"/>
+            <xs:element name="CodeForBusinessSegmentIssuingCompany" type="tst:CSecCompAtv"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="NDivCo" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="NRubCo" dfdl:length="3">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="NOrdCo" dfdl:length="7">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:complexType name="AClasCo">
+        <xs:sequence>
+            <xs:element name="NumberOfSection" type="tst:NDivCo"/>
+            <xs:element name="NumberOfHeading" type="tst:NRubCo"/>
+            <xs:element name="OrderOfAppearance" type="tst:NRubCo"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="IMarche" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CPyCot" dfdl:length="3">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CDevCot" dfdl:length="3">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DInMar" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CCpmLco" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CSocEmetVal" dfdl:length="2">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIdxPasCotVarVal" dfdl:length="2">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YUniExpP" dfdl:length="1">
+        <xs:restriction base="tst:BaseString">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="DDrCV" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:complexType name="PDrAjSajCotV">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt13"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PDrAjCotV">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt13"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="QPasCotFxeVal">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt13"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="LVal18AFC" dfdl:length="18">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YTitVal" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="OCertifVAL" dfdl:length="2">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:complexType name="QNmVal">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="YAdTitNg" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CAFCValObjMsg" dfdl:length="6">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CAFCValSjaWar" dfdl:length="6">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="IYMdvVal" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="IApaValRlISB" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="IApaValRlSbi" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="IApaValRlGrgr" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="IApaValRlDn" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:complexType name="QNorCpxBlcFmp">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="SRbEmp" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QQtTranMarVal" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DPrEch" dfdl:length="8">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CResSbAniVal" dfdl:length="5">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CSbAniVal" dfdl:length="3">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:complexType name="ASbAniVal">
+        <xs:sequence>
+            <xs:element name="FirstFiveLiquidityProviderID" type="tst:CResSbAniVal"/>
+            <xs:element name="LastThreeLiquidityProviderID" type="tst:CSbAniVal"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="YApaValIdxRLC" dfdl:length="1">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CIsin" dfdl:length="12">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CValIsinChn" dfdl:length="12">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="TDeDn" dfdl:length="2">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="YTrtTitSico" dfdl:length="1">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DAdValDep" dfdl:length="8">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="DRadValDep" dfdl:length="8">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="IApaValRlGar" dfdl:length="8">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CFfoDepVal" dfdl:length="8">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CGdSecEcoFtse" dfdl:length="2">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CSecEcoFtse" dfdl:length="2">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CSoSecEcoFtse" dfdl:length="3">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:complexType name="AClsEcoFtseSoc">
+        <xs:sequence>
+            <xs:element name="FTSEIdEconomicGroup" type="tst:CGdSecEcoFtse"/>
+            <xs:element name="FTSESectorId" type="tst:CSecEcoFtse"/>
+            <xs:element name="FirstFiveLiquidityProviderID" type="tst:CSoSecEcoFtse"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="ZNorTitBlcNg" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="CFlmVal" dfdl:length="2">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:complexType name="QNmMarValVlo">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="CDevNmMarValIso3A" dfdl:length="3">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="ZTitCirObl" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:complexType name="AMeLim">
+        <xs:sequence>
+            <xs:element name="BestBuyLimitQuantity" type="tst:QTitMeDen"/>
+            <xs:element name="NumberOfOrdersBestBuyLimit" type="tst:ZOrdMeDem"/>
+            <xs:element dfdl:lengthKind="implicit" name="BestBuyLimitPrice" type="tst:PMeDem"/>
+            <xs:element dfdl:lengthKind="implicit" name="BestSellLimitPrice" type="tst:PMeOf"/>
+            <xs:element name="NumberOfOrders" type="tst:ZOrdMeOf"/>
+            <xs:element name="BestSellLimitQuantity" type="tst:QTitMeOf"/>
+            <xs:element name="Filler2" type="tst:Filler_2"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PMeOf">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt13"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PMeDem">
+        <xs:sequence>
+            <xs:element name="DecimalPointLocator" type="tst:IFt"/>
+            <xs:element name="Amount" type="tst:QMt13"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="ZOrdMeOf" dfdl:length="4">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QTitMeOf" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="ZOrdMeDem" dfdl:length="4">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QTitMeDem" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="QTitMeDen" dfdl:length="12">
+        <xs:restriction base="tst:BaseNumber"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_9" dfdl:length="9">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_7" dfdl:length="7">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_18" dfdl:length="18">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_17" dfdl:length="17">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="Filler_11" dfdl:length="11">
+        <xs:restriction base="tst:BaseString"/>
+    </xs:simpleType>
+
+</xs:schema>

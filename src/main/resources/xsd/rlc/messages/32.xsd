@@ -1,0 +1,38 @@
+<xs:schema
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/"
+        xmlns:frm="http://www.example.com/tse/format"
+        xmlns:tst="http://www.example.com/tse/TSETypes"
+        xmlns:fn="http://www.w3.org/2005/xpath-functions"
+        targetNamespace="http://www.example.com/tse/message/rlc/32">
+
+    <xs:import namespace="http://www.example.com/tse/format" schemaLocation="../../formatdfdl.xsd"/>
+    <xs:import namespace="http://www.example.com/tse/TSETypes" schemaLocation="../../tseTypes.xsd"/>
+
+
+    <xs:annotation>
+        <xs:appinfo source="http://www.ogf.org/dfdl/">
+            <dfdl:format ref="frm:format"/>
+        </xs:appinfo>
+    </xs:annotation>
+
+    <xs:element name="OpeningSummaryMessage" dfdl:lengthKind="implicit">
+        <xs:complexType >
+            <xs:sequence>
+                <xs:element dfdl:lengthKind="implicit" name="FirstTradePriceOfTheTradingDay" type="tst:PPrCJ"/>
+                <xs:element dfdl:lengthKind="implicit" name="LastTradePriceOfTheTradingDay" type="tst:DrCotJ"/>
+                <xs:element dfdl:lengthKind="implicit" name="HighestTradePriceOfTheTradingDay" type="tst:PPhSeaCotJ"/>
+                <xs:element dfdl:lengthKind="implicit" name="LowestTradePriceOfTheTradingDay" type="tst:PPbSeaCotJ"/>
+                <xs:element name="TrendFlag" type="tst:YPOvVal"/>
+                <xs:element name="TotalTradedQuantityAtOpening" type="tst:QTitNgOvVal"/>
+                <xs:element name="LastTradePrice" type="tst:ISensVarP"/>
+                <xs:element name="Filler5" type="tst:Filler_5"/>
+                <xs:element name="SignOfPrice" type="tst:CSensVarPTranPP"/>
+                <xs:element dfdl:lengthKind="implicit" name="PercentageOfPrice" type="tst:XQVarPJDrPRf"/>
+                <xs:element name="Filler" type="tst:Filler_26"/>
+            </xs:sequence>
+        </xs:complexType>
+
+    </xs:element>
+
+</xs:schema>

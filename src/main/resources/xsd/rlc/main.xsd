@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:tst="http://www.example.com/tse/TSETypes"
+        xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/"
+        xmlns:fn="http://www.w3.org/2005/xpath-functions"
+
+        xmlns:rlc23="http://www.example.com/tse/message/rlc/23"
+        xmlns:rlc32="http://www.example.com/tse/message/rlc/32"
+        xmlns:rlcf="http://www.example.com/tse/format"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.example.com/tse/rlcMessage" >
+    <import namespace="http://www.example.com/tse/message/rlc/23" schemaLocation="messages/23.xsd"/>
+    <import namespace="http://www.example.com/tse/message/rlc/32" schemaLocation="messages/32.xsd"/>
+    <import namespace="http://www.example.com/tse/format"         schemaLocation="../formatdfdl.xsd"/>
+    <import namespace="http://www.example.com/tse/TSETypes"       schemaLocation="../tseTypes.xsd"/>
+
+    <xs:annotation>
+        <xs:appinfo source="http://www.ogf.org/dfdl/">
+            <dfdl:format ref="rlcf:format"/>
+        </xs:appinfo>
+    </xs:annotation>
+
+
+    <element name="RLCMessage" dfdl:lengthKind="implicit">
+        <complexType dfdl:lengthKind="implicit">
+            <sequence>
+                <xs:element  name="Version"  type="tst:Version" />
+                <xs:element  name="Type"  type="tst:UnType" />
+                <xs:element  name="UnId"  type="tst:UnId" />
+                <xs:element  name="InstrumentId"  type="tst:InstrumentID" />
+                <xs:element  name="ShortId"  type="tst:ZOctMsgRLC5" />
+                <xs:element  dfdl:length="8" name="DateOfMessage"  type="tst:BaseString" />
+                <xs:element  dfdl:length="6" name="TimeOfMessage"  type="tst:BaseString"/>
+                <xs:element  dfdl:length="2" name="MilliSecondsOfMessage"  type="tst:BaseString"/>
+                <xs:element  name="MessageType" type="tst:YMsgRLC">
+                    <xs:annotation>
+                        <xs:appinfo source="http://www.ogf.org/dfdl/">
+                            <dfdl:setVariable ref="rlcf:messageType" value="{.}"/>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element dfdl:length="6" name="FunctionalHeader" type="tst:BaseString" />
+                <xs:choice dfdl:choiceDispatchKey="{$rlcf:messageType}">
+                    <element ref="rlc23:TextMessage"                    dfdl:choiceBranchKey="23"/>
+                    <element ref="rlc32:OpeningSummaryMessage"          dfdl:choiceBranchKey="32"/>
+                </xs:choice>
+            </sequence>
+        </complexType>
+    </element>
+</schema>
+
+
+
+
+
+
+

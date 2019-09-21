@@ -1,0 +1,34 @@
+<xs:schema
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/"
+        xmlns:frm="http://www.example.com/tse/format"
+        xmlns:tst="http://www.example.com/tse/TSETypes"
+        xmlns:fn="http://www.w3.org/2005/xpath-functions"
+        targetNamespace="http://www.example.com/tse/message/rlc/23">
+
+    <xs:import namespace="http://www.example.com/tse/format" schemaLocation="../../formatdfdl.xsd"/>
+    <xs:import namespace="http://www.example.com/tse/TSETypes" schemaLocation="../../tseTypes.xsd"/>
+
+
+    <xs:annotation>
+        <xs:appinfo source="http://www.ogf.org/dfdl/">
+            <dfdl:format ref="frm:format"/>
+        </xs:appinfo>
+    </xs:annotation>
+    <xs:element name="TextMessage" dfdl:lengthKind="implicit">
+
+        <xs:complexType >
+            <xs:sequence>
+                <xs:element name="TypeOfMarket" type="tst:YMarMsg"/>
+                <xs:element name="PriorityIndicator" type="tst:IUrg"/>
+                <xs:element name="NatureOfMessage" type="tst:YCrl"/>
+                <xs:element name="AddressType" type="tst:YDest"/>
+                <xs:element name="MessageNumber" type="tst:CIdMsg"/>
+                <xs:element name="NumberOfMessagesInThisMessage" type="tst:ZTotSeg"/>
+                <xs:element name="SequenceNumberOfMessageWithinThisMessage" type="tst:NSeqSeg"/>
+                <xs:element name="MessageTitle" type="tst:LTit"/>
+                <xs:element name="MessageText" type="tst:LMsg"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
